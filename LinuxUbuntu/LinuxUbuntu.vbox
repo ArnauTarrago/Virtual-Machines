@@ -6,25 +6,28 @@
 ** Use VBoxManage or the VirtualBox Manager GUI to make changes.
 -->
 <VirtualBox xmlns="http://www.virtualbox.org/" version="1.16-windows">
-  <Machine uuid="{ec3d6c2b-8519-4a73-b2c6-b4cad584019a}" name="LinuxUbuntu" OSType="Ubuntu_64" snapshotFolder="Snapshots" lastStateChange="2019-09-16T15:25:02Z">
+  <Machine uuid="{ec3d6c2b-8519-4a73-b2c6-b4cad584019a}" name="LinuxUbuntu" OSType="Ubuntu_64" snapshotFolder="Snapshots" lastStateChange="2019-09-16T15:52:42Z" aborted="true">
     <MediaRegistry>
       <HardDisks>
         <HardDisk uuid="{a8f07f54-a63a-4bed-9e71-c3d236030e3a}" location="LinuxUbuntu.vdi" format="VDI" type="Normal"/>
       </HardDisks>
+      <DVDImages>
+        <Image uuid="{c1751838-ad0f-47d6-b79d-0e583c5e8689}" location="C:/Users/arnau.tarrago/Desktop/ubuntu-18.04.3-desktop-amd64.iso"/>
+      </DVDImages>
     </MediaRegistry>
     <ExtraData>
       <ExtraDataItem name="GUI/FirstRun" value="yes"/>
     </ExtraData>
     <Hardware>
-      <CPU>
-        <PAE enabled="false"/>
+      <CPU count="4">
+        <PAE enabled="true"/>
         <LongMode enabled="true"/>
         <X2APIC enabled="true"/>
         <HardwareVirtExLargePages enabled="true"/>
       </CPU>
       <Memory RAMSize="4096"/>
       <HID Pointing="USBTablet"/>
-      <Display controller="VMSVGA" VRAMSize="16"/>
+      <Display controller="VMSVGA" VRAMSize="128" accelerate3D="true"/>
       <VideoCapture file="." fps="25"/>
       <BIOS>
         <IOAPIC enabled="true"/>
@@ -44,7 +47,9 @@
     </Hardware>
     <StorageControllers>
       <StorageController name="IDE" type="PIIX4" PortCount="2" useHostIOCache="true" Bootable="true">
-        <AttachedDevice passthrough="false" type="DVD" hotpluggable="false" port="1" device="0"/>
+        <AttachedDevice passthrough="false" type="DVD" hotpluggable="false" port="1" device="0">
+          <Image uuid="{c1751838-ad0f-47d6-b79d-0e583c5e8689}"/>
+        </AttachedDevice>
       </StorageController>
       <StorageController name="SATA" type="AHCI" PortCount="1" useHostIOCache="false" Bootable="true" IDE0MasterEmulationPort="0" IDE0SlaveEmulationPort="1" IDE1MasterEmulationPort="2" IDE1SlaveEmulationPort="3">
         <AttachedDevice type="HardDisk" hotpluggable="false" port="0" device="0">
